@@ -1,0 +1,25 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Online ML AI engine
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Krzysztof
+    family-names: Martyn
+    email: kmartyn@man.poznan.pl
+    affiliation: Poznań Supercomputing and Networking Center
+  - given-names: Alex
+    family-names: Terentowicz
+    email: alext@man.poznan.pl
+    affiliation: Poznań Supercomputing and Networking Center
+  - given-names: Witold
+    family-names: Taisner
+    email: witoldt@man.poznan.pl
+    affiliation: Poznań Supercomputing and Networking Center
+repository-code: >-
+  https://git.man.poznan.pl/stash/projects/EOSC-RS/repos/online-ml-ai-engine
+license: EUPL-1.2

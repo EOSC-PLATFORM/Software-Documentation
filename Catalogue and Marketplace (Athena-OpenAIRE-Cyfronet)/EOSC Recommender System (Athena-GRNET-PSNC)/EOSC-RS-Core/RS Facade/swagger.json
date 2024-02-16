@@ -1,0 +1,1219 @@
+{
+   "openapi": "3.1.0",
+   "info": {
+      "title": "RS Facade",
+      "version": "1.5.2"
+   },
+   "paths": {
+      "/recommendations": {
+         "post": {
+            "tags": [
+               "recommendation"
+            ],
+            "summary": "Returns a list of sets of recommendations for each of num_lists list.\n        Each of the set of recommendations contains 10 ids of recommended scientific services or resources,\n        explanations, and short explanations.",
+            "description": "A function that generates personalized and anonymous recommendations\n    for the user based on the user context.",
+            "operationId": "recommendations_recommendations_post",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/RecommendationContext"
+                     }
+                  }
+               },
+               "required": true
+            },
+            "responses": {
+               "200": {
+                  "description": "Successful Response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/RecommendationSet"
+                        }
+                     }
+                  }
+               },
+               "422": {
+                  "description": "Validation Error",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/HTTPValidationError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/project_completion/recommendation": {
+         "post": {
+            "tags": [
+               "recommendation"
+            ],
+            "summary": "Get Project Completion Recommendation",
+            "description": "**Suggest a completion for the project**\n\n        Based on the project given as input, we recommend services that are frequently combined\n        with the ones existing in the project.\n\n        - **project_id**: the id of the project currently viewed by the user\n        - **num**: number of recommendations we want returned\n\n        **Returns** a list of dicts where service_id is the id of the recommended service\n        and score is the support from the frequent item sets.",
+            "operationId": "project_completion_recommendation_project_completion_recommendation_post",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/ProjectCompletionRecommendationParameters"
+                     }
+                  }
+               },
+               "required": true
+            },
+            "responses": {
+               "200": {
+                  "description": "Successful Response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "items": {
+                              "$ref": "#/components/schemas/ProjectCompletionRecommendation"
+                           },
+                           "type": "array",
+                           "title": "Response Project Completion Recommendation Project Completion Recommendation Post"
+                        }
+                     }
+                  }
+               },
+               "422": {
+                  "description": "Validation Error",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/HTTPValidationError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/similar_services/recommendation": {
+         "post": {
+            "tags": [
+               "recommendation"
+            ],
+            "summary": "Get Similar Services Recommendation",
+            "description": "**Suggest a similar service**\n\n        Based on the service given as input, we recommend similar services utilizing both textual\n        and metadata attributes.\n\n        - **user_id**: the id of the user (as it was given in the marketplace)\n        - **unique_id**: the unique identifier of the not logged in user \n        - **aai_uid**: the unique AAI identifier of the logged user\n        - **timestamp** the exact time of the recommendation request sending\n        - **service_id**: the id of the service currently viewed by the user\n        - **num**: number of recommendations we want returned\n\n        **Returns** a collection of recommended services.",
+            "operationId": "similar_services_recommendation_similar_services_recommendation_post",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/SimilarServicesRecommendationParameters"
+                     }
+                  }
+               },
+               "required": true
+            },
+            "responses": {
+               "200": {
+                  "description": "Successful Response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/RecommendationSet"
+                        }
+                     }
+                  }
+               },
+               "422": {
+                  "description": "Validation Error",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/HTTPValidationError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/similar_resources": {
+         "post": {
+            "tags": [
+               "similar resources"
+            ],
+            "summary": "Returns a set of recommendations that contains\n        10 ids of recommended resources.",
+            "description": "A function that generates recommendations of similar resources\n    for a user based on the user's context.",
+            "operationId": "recommendations_similar_resources_post",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/SimilarResourcesContext"
+                     }
+                  }
+               },
+               "required": true
+            },
+            "responses": {
+               "200": {
+                  "description": "Successful Response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/RecommendationSet"
+                        }
+                     }
+                  }
+               },
+               "422": {
+                  "description": "Validation Error",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/HTTPValidationError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/diag": {
+         "get": {
+            "tags": [
+               "diagnose"
+            ],
+            "summary": "Diagnostic endpoint",
+            "description": "A function to check the status of dependent services.",
+            "operationId": "diag_diag_get",
+            "parameters": [
+               {
+                  "name": "details",
+                  "in": "query",
+                  "required": false,
+                  "schema": {
+                     "type": "boolean",
+                     "default": false,
+                     "title": "Details"
+                  }
+               }
+            ],
+            "responses": {
+               "200": {
+                  "description": "Successful Response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "title": "Response Diag Diag Get"
+                        }
+                     }
+                  }
+               },
+               "422": {
+                  "description": "Validation Error",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/HTTPValidationError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/v1/statistics/rs/daily": {
+         "post": {
+            "tags": [
+               "statistics"
+            ],
+            "summary": "Get Daily Recommendations",
+            "description": "A function that get daily recommendations statistics.",
+            "operationId": "statistics_rs_daily_v1_statistics_rs_daily_post",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/StatisticsDaily"
+                     }
+                  }
+               },
+               "required": true
+            },
+            "responses": {
+               "200": {
+                  "description": "Successful Response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "items": {
+                              "$ref": "#/components/schemas/StatisticsDailyResponse"
+                           },
+                           "type": "array",
+                           "title": "Response Statistics Rs Daily V1 Statistics Rs Daily Post"
+                        }
+                     }
+                  }
+               },
+               "422": {
+                  "description": "Validation Error",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/HTTPValidationError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/v1/statistics/rs/most_recommended/": {
+         "post": {
+            "tags": [
+               "statistics"
+            ],
+            "summary": "Get Total Recommendations",
+            "description": "A function that get most recommended services.",
+            "operationId": "statistics_rs_most_recommended_v1_statistics_rs_most_recommended__post",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/StatisticsMostRecommended"
+                     }
+                  }
+               },
+               "required": true
+            },
+            "responses": {
+               "200": {
+                  "description": "Successful Response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "items": {
+                              "$ref": "#/components/schemas/StatisticsMostRecommendedResponse"
+                           },
+                           "type": "array",
+                           "title": "Response Statistics Rs Most Recommended V1 Statistics Rs Most Recommended  Post"
+                        }
+                     }
+                  }
+               },
+               "422": {
+                  "description": "Validation Error",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/HTTPValidationError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/v1/statistics/rs/most_recommended_along_your_services/": {
+         "post": {
+            "tags": [
+               "statistics"
+            ],
+            "summary": "Get Most Recommended Along Your Services",
+            "description": "A function that get most recommended services along provider.",
+            "operationId": "statistics_rs_most_recommended_along_your_services_v1_statistics_rs_most_recommended_along_your_services__post",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/StatisticsMostRecommendedAlongYourServices"
+                     }
+                  }
+               },
+               "required": true
+            },
+            "responses": {
+               "200": {
+                  "description": "Successful Response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "items": {
+                              "$ref": "#/components/schemas/StatisticsMostRecommendedAlongYourServicesResponse"
+                           },
+                           "type": "array",
+                           "title": "Response Statistics Rs Most Recommended Along Your Services V1 Statistics Rs Most Recommended Along Your Services  Post"
+                        }
+                     }
+                  }
+               },
+               "422": {
+                  "description": "Validation Error",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/HTTPValidationError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   },
+   "components": {
+      "schemas": {
+         "Candidates": {
+            "properties": {
+               "dataset": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Dataset candidates",
+                  "description": "List of resource ids of dataset candidates for sorting",
+                  "default": []
+               },
+               "publication": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Publication candidates",
+                  "description": "List of resource ids of publication candidates for sorting",
+                  "default": []
+               },
+               "software": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Software candidates",
+                  "description": "List of resource ids of software candidates for sorting",
+                  "default": []
+               },
+               "other": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Other research product candidates",
+                  "description": "List of resource ids of other research product candidates for sorting",
+                  "default": []
+               },
+               "training": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Training candidates",
+                  "description": "List of resource ids of training candidates for sorting",
+                  "default": []
+               },
+               "service": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "integer"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Service candidates",
+                  "description": "List of resource ids of service candidates for sorting",
+                  "default": []
+               },
+               "datasource": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "integer"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Data source candidates",
+                  "description": "List of resource ids of data source candidates for sorting",
+                  "default": []
+               }
+            },
+            "type": "object",
+            "title": "Candidates",
+            "description": "Candidates to sort."
+         },
+         "ClientId": {
+            "type": "string",
+            "enum": [
+               "marketplace",
+               "search_service",
+               "user_dashboard",
+               "undefined"
+            ],
+            "title": "ClientId",
+            "description": "Client id."
+         },
+         "HTTPValidationError": {
+            "properties": {
+               "detail": {
+                  "items": {
+                     "$ref": "#/components/schemas/ValidationError"
+                  },
+                  "type": "array",
+                  "title": "Detail"
+               }
+            },
+            "type": "object",
+            "title": "HTTPValidationError"
+         },
+         "PanelId": {
+            "type": "string",
+            "enum": [
+               "all",
+               "services",
+               "v1",
+               "v2",
+               "datasets",
+               "publications",
+               "software",
+               "trainings",
+               "other_research_product",
+               "data-sources",
+               "similar_services"
+            ],
+            "title": "PanelId",
+            "description": "Panel Id."
+         },
+         "ProjectCompletionRecommendation": {
+            "properties": {
+               "service_id": {
+                  "type": "integer",
+                  "title": "Service Id"
+               },
+               "score": {
+                  "type": "number",
+                  "title": "Score"
+               }
+            },
+            "type": "object",
+            "required": [
+               "service_id",
+               "score"
+            ],
+            "title": "ProjectCompletionRecommendation",
+            "description": "Service with score"
+         },
+         "ProjectCompletionRecommendationParameters": {
+            "properties": {
+               "project_id": {
+                  "type": "integer",
+                  "title": "Project Id"
+               },
+               "num": {
+                  "type": "integer",
+                  "title": "Num"
+               }
+            },
+            "type": "object",
+            "required": [
+               "project_id",
+               "num"
+            ],
+            "title": "ProjectCompletionRecommendationParameters",
+            "description": "Project context for recommendations."
+         },
+         "RecommendationContext": {
+            "properties": {
+               "user_id": {
+                  "anyOf": [
+                     {
+                        "type": "integer"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "User ID",
+                  "description": "The unique marketplace identifier of the logged user."
+               },
+               "unique_id": {
+                  "type": "string",
+                  "title": "Not logged user ID",
+                  "description": "The unique identifier of the not logged user."
+               },
+               "aai_uid": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "AAI user ID",
+                  "description": "The unique AAI identifier of the logged user."
+               },
+               "timestamp": {
+                  "type": "string",
+                  "format": "date-time",
+                  "title": "Timestamp",
+                  "description": "The exact time of the recommendation request sending in iso8601 format."
+               },
+               "visit_id": {
+                  "type": "string",
+                  "title": "recommendation page visit ID",
+                  "description": "The unique identifier of the user presence on the recommendation page in the specific time (could be a function of above fields)"
+               },
+               "page_id": {
+                  "type": "string",
+                  "title": "Page ID",
+                  "description": "The unique identifier of the page with recommendation panel."
+               },
+               "panel_id": {
+                  "allOf": [
+                     {
+                        "$ref": "#/components/schemas/PanelId"
+                     }
+                  ],
+                  "title": "Version of the panel",
+                  "description": "The unique identifiers of the set of recommender panels on the page."
+               },
+               "candidates": {
+                  "allOf": [
+                     {
+                        "$ref": "#/components/schemas/Candidates"
+                     }
+                  ],
+                  "title": "Recommendation candidates",
+                  "description": "Lists of candidates for recommendation"
+               },
+               "client_id": {
+                  "anyOf": [
+                     {
+                        "$ref": "#/components/schemas/ClientId"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Client ID"
+               },
+               "engine_version": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Engine version"
+               },
+               "search_data": {
+                  "$ref": "#/components/schemas/SearchData"
+               }
+            },
+            "type": "object",
+            "required": [
+               "unique_id",
+               "timestamp",
+               "visit_id",
+               "page_id",
+               "panel_id",
+               "candidates",
+               "search_data"
+            ],
+            "title": "RecommendationContext",
+            "description": "User context for recommendations."
+         },
+         "RecommendationSet": {
+            "properties": {
+               "panel_id": {
+                  "$ref": "#/components/schemas/PanelId"
+               },
+               "recommendations": {
+                  "items": {
+                     "anyOf": [
+                        {
+                           "type": "integer"
+                        },
+                        {
+                           "type": "string"
+                        }
+                     ]
+                  },
+                  "type": "array",
+                  "title": "Recommendations"
+               },
+               "explanations": {
+                  "items": {
+                     "type": "string"
+                  },
+                  "type": "array",
+                  "title": "Explanations"
+               },
+               "explanations_short": {
+                  "items": {
+                     "type": "string"
+                  },
+                  "type": "array",
+                  "title": "Explanations Short"
+               },
+               "engine_versions": {
+                  "items": {
+                     "type": "string"
+                  },
+                  "type": "array",
+                  "title": "Engine Versions"
+               }
+            },
+            "type": "object",
+            "required": [
+               "panel_id",
+               "recommendations",
+               "explanations",
+               "explanations_short",
+               "engine_versions"
+            ],
+            "title": "RecommendationSet",
+            "description": "Resource recommendations set"
+         },
+         "ResourceType": {
+            "type": "string",
+            "enum": [
+               "datasets",
+               "publications",
+               "software",
+               "trainings",
+               "other_research_product"
+            ],
+            "title": "ResourceType",
+            "description": "Resource type."
+         },
+         "SearchData": {
+            "properties": {
+               "q": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Search phrase"
+               },
+               "categories": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Category"
+               },
+               "geographical_availabilities": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Countries"
+               },
+               "order_type": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Order type"
+               },
+               "providers": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Provider"
+               },
+               "rating": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Rating"
+               },
+               "related_platforms": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Related platforms"
+               },
+               "scientific_domains": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Scientific domain"
+               },
+               "sort": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Sort filter"
+               },
+               "target_users": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Target users"
+               }
+            },
+            "type": "object",
+            "title": "SearchData",
+            "description": "User search data."
+         },
+         "SimilarResourcesContext": {
+            "properties": {
+               "user_id": {
+                  "anyOf": [
+                     {
+                        "type": "integer"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "User ID",
+                  "description": "The unique marketplace identifier of the logged user."
+               },
+               "unique_id": {
+                  "type": "string",
+                  "title": "Not logged user ID",
+                  "description": "The unique identifier of the not logged user."
+               },
+               "aai_uid": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "AAI user ID",
+                  "description": "The unique AAI identifier of the logged user."
+               },
+               "timestamp": {
+                  "type": "string",
+                  "format": "date-time",
+                  "title": "Timestamp",
+                  "description": "The exact time of the recommendation request sending in iso8601 format."
+               },
+               "page_id": {
+                  "type": "string",
+                  "title": "Page ID",
+                  "description": "The unique identifier of the page with recommendation panel."
+               },
+               "panel_id": {
+                  "type": "string",
+                  "title": "Version of the panel",
+                  "description": "The unique identifiers of the set of recommender panels on the page."
+               },
+               "resource_id": {
+                  "type": "string",
+                  "title": "Resource unique identifier"
+               },
+               "resource_type": {
+                  "allOf": [
+                     {
+                        "$ref": "#/components/schemas/ResourceType"
+                     }
+                  ],
+                  "title": "Resource type"
+               },
+               "client_id": {
+                  "anyOf": [
+                     {
+                        "$ref": "#/components/schemas/ClientId"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Client ID"
+               },
+               "engine_version": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Engine version"
+               }
+            },
+            "type": "object",
+            "required": [
+               "unique_id",
+               "timestamp",
+               "page_id",
+               "panel_id",
+               "resource_id",
+               "resource_type"
+            ],
+            "title": "SimilarResourcesContext",
+            "description": "User and resource context for recommendations."
+         },
+         "SimilarServicesRecommendationParameters": {
+            "properties": {
+               "user_id": {
+                  "anyOf": [
+                     {
+                        "type": "integer"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "User ID",
+                  "description": "The unique marketplace identifier of the logged user."
+               },
+               "unique_id": {
+                  "type": "string",
+                  "title": "Not logged user ID",
+                  "description": "The unique identifier of the not logged user."
+               },
+               "aai_uid": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "AAI user ID",
+                  "description": "The unique AAI identifier of the logged user."
+               },
+               "timestamp": {
+                  "type": "string",
+                  "format": "date-time",
+                  "title": "Timestamp",
+                  "description": "The exact time of the recommendation request sending in iso8601 format."
+               },
+               "service_id": {
+                  "type": "integer",
+                  "title": "Service Id"
+               },
+               "num": {
+                  "type": "integer",
+                  "title": "Num"
+               }
+            },
+            "type": "object",
+            "required": [
+               "unique_id",
+               "timestamp",
+               "service_id",
+               "num"
+            ],
+            "title": "SimilarServicesRecommendationParameters",
+            "description": "User and resource context for recommendations."
+         },
+         "StatisticsDaily": {
+            "properties": {
+               "provider_id": {
+                  "type": "string",
+                  "title": "Provider Id"
+               },
+               "service_id": {
+                  "type": "string",
+                  "title": "Service Id"
+               }
+            },
+            "type": "object",
+            "required": [
+               "provider_id",
+               "service_id"
+            ],
+            "title": "StatisticsDaily",
+            "description": "Provider and service context"
+         },
+         "StatisticsDailyResponse": {
+            "properties": {
+               "date": {
+                  "type": "string",
+                  "title": "Date"
+               },
+               "recommendations": {
+                  "type": "integer",
+                  "title": "Recommendations"
+               }
+            },
+            "type": "object",
+            "required": [
+               "date",
+               "recommendations"
+            ],
+            "title": "StatisticsDailyResponse",
+            "description": "Daily statistics"
+         },
+         "StatisticsMostRecommended": {
+            "properties": {
+               "provider_id": {
+                  "type": "string",
+                  "title": "Provider Id"
+               },
+               "top_n": {
+                  "anyOf": [
+                     {
+                        "type": "integer"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Top N",
+                  "default": 5
+               }
+            },
+            "type": "object",
+            "required": [
+               "provider_id"
+            ],
+            "title": "StatisticsMostRecommended",
+            "description": "Provider context"
+         },
+         "StatisticsMostRecommendedAlongYourServices": {
+            "properties": {
+               "provider_id": {
+                  "type": "string",
+                  "title": "Provider Id"
+               },
+               "service_id": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Service Id"
+               },
+               "top_services_numb": {
+                  "anyOf": [
+                     {
+                        "type": "integer"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Top Services Numb",
+                  "default": 5
+               },
+               "top_competitors_numb": {
+                  "anyOf": [
+                     {
+                        "type": "integer"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Top Competitors Numb",
+                  "default": 5
+               }
+            },
+            "type": "object",
+            "required": [
+               "provider_id",
+               "service_id"
+            ],
+            "title": "StatisticsMostRecommendedAlongYourServices",
+            "description": "Provider and service context"
+         },
+         "StatisticsMostRecommendedAlongYourServicesResponse": {
+            "properties": {
+               "service_id": {
+                  "type": "string",
+                  "title": "Service Id"
+               },
+               "total_competitor_recommendations": {
+                  "type": "integer",
+                  "title": "Total Competitor Recommendations"
+               },
+               "competitors": {
+                  "items": {
+                     "$ref": "#/components/schemas/StatisticsMostRecommendedResponse"
+                  },
+                  "type": "array",
+                  "title": "Competitors"
+               }
+            },
+            "type": "object",
+            "required": [
+               "service_id",
+               "total_competitor_recommendations",
+               "competitors"
+            ],
+            "title": "StatisticsMostRecommendedAlongYourServicesResponse",
+            "description": "Most recommended service along provider"
+         },
+         "StatisticsMostRecommendedResponse": {
+            "properties": {
+               "service_id": {
+                  "type": "string",
+                  "title": "\tService Id"
+               },
+               "recommendations": {
+                  "type": "integer",
+                  "title": "Recommendations"
+               }
+            },
+            "type": "object",
+            "required": [
+               "service_id",
+               "recommendations"
+            ],
+            "title": "StatisticsMostRecommendedResponse",
+            "description": "Most recommended service"
+         },
+         "ValidationError": {
+            "properties": {
+               "loc": {
+                  "items": {
+                     "anyOf": [
+                        {
+                           "type": "string"
+                        },
+                        {
+                           "type": "integer"
+                        }
+                     ]
+                  },
+                  "type": "array",
+                  "title": "Location"
+               },
+               "msg": {
+                  "type": "string",
+                  "title": "Message"
+               },
+               "type": {
+                  "type": "string",
+                  "title": "Error Type"
+               }
+            },
+            "type": "object",
+            "required": [
+               "loc",
+               "msg",
+               "type"
+            ],
+            "title": "ValidationError"
+         }
+      }
+   },
+   "tags": [
+      {
+         "name": "recommendation",
+         "description": "Endpoint used for getting recommendations"
+      }
+   ]
+}

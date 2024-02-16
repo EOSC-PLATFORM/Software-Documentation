@@ -1,0 +1,28 @@
+title Nearest Neighbor Finder search
+
+participant "API\nOnline ML Engine" as online
+
+participant "API\nNN Finder" as nn_finder
+
+group Search for neighbors\nby IDs
+online->nn_finder: 1. Get nearest neighbors\n- number of  neighbors,\n- context resources ID list 
+note over nn_finder: Map IDs to internal index\nand then to object embeddings
+note over nn_finder: Search by embeddings
+note over nn_finder: Map results in internal index to IDs
+nn_finder->online: 2. Nearest neighbors IDs \n(and optionally embeddings)
+end
+
+group Search for nearest neighbors\nby embeddings
+online->nn_finder: 1. Get nearest neighbors\n- number of neighbors,\n- context embeddings list 
+note over nn_finder: Search by embeddings
+note over nn_finder: Map results in internal index to IDs
+nn_finder->online: 2. nearest neighbors IDs\n(and optionally embeddings)
+end
+
+group Search for direct neighbors \nfrom relations graph
+online->nn_finder: 1. Get neighbors from graph\n- number of neighbors,\n- context resources ID list 
+note over nn_finder: Find neighbors in graph dictionary
+nn_finder->online: 2. Neighbors IDs\n
+end
+
+@enduml

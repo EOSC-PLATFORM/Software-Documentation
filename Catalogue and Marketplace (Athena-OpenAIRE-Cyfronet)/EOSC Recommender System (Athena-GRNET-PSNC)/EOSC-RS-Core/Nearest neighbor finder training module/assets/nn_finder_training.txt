@@ -1,0 +1,38 @@
+title Nearest Neighbor Finder training
+
+box "HDFS"
+database "File storage" as hdfs
+end box
+
+participant "API\nNN Finder Training Module" as train_index
+queue "Redis/RabbitMQ" as rabbit
+participant "Celery worker" as celery
+
+box "PostgreSQL"
+database "Metadata" as metadata_storage
+database "Embeddings" as embeddings
+end box
+
+
+group Train indexes
+  loop Train index for each table
+    train_index->rabbit: 1. Send training task \n- table_name
+    rabbit->celery: 2. Send training tasks \n- table_name
+    celery->metadata_storage: 3. Get current metadata \n- table_name
+    metadata_storage-->celery: 4. Return metadata\n- row_count\n- db_table_name
+    
+    group Create Indexer object
+      note over celery: Save timestamp
+      note over celery: Create empty index \nof size table_size
+    end
+    
+    loop Batch training
+            celery->embeddings: 5. Select batch of embeddings \n- db_table_name
+            embeddings-->celery: 6. Resource embeddings batch
+            note over celery: Train index 
+        end
+    celery-->hdfs: 7. Save created indexer \nas indexer_stamped_name \n- Indexer
+  end
+end
+
+@enduml
