@@ -1,0 +1,607 @@
+{
+   "openapi": "3.1.0",
+   "info": {
+      "title": "Online engine",
+      "version": "1.6.9"
+   },
+   "paths": {
+      "/recommendations": {
+         "post": {
+            "tags": [
+               "recommendation"
+            ],
+            "summary": "Returns a list of sets of recommendations for each of num_lists list.\n    Each of the set of recommendations contains 3\n    ids of recommended scientific services, explanations, and short explanations.",
+            "description": "A function that generates personalized and anonymous recommendations\n    for the user based on the user context.",
+            "operationId": "recommendations_recommendations_post",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/RecommendationContext"
+                     }
+                  }
+               },
+               "required": true
+            },
+            "responses": {
+               "200": {
+                  "description": "Successful Response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/RecommendationSet"
+                        }
+                     }
+                  }
+               },
+               "422": {
+                  "description": "Validation Error",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/HTTPValidationError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/similar_resources": {
+         "post": {
+            "tags": [
+               "similar resources"
+            ],
+            "summary": "Returns a set of recommendations that contains\n    3 ids of recommended resources.",
+            "description": "A function that finds similar resources.",
+            "operationId": "similar_resources_similar_resources_post",
+            "requestBody": {
+               "content": {
+                  "application/json": {
+                     "schema": {
+                        "$ref": "#/components/schemas/SimilarResourcesContext"
+                     }
+                  }
+               },
+               "required": true
+            },
+            "responses": {
+               "200": {
+                  "description": "Successful Response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/RecommendationSet"
+                        }
+                     }
+                  }
+               },
+               "422": {
+                  "description": "Validation Error",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "$ref": "#/components/schemas/HTTPValidationError"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      },
+      "/diag": {
+         "get": {
+            "tags": [
+               "diagnose"
+            ],
+            "summary": "Diagnostic endpoint",
+            "description": "A function to check the status of dependent services.",
+            "operationId": "diag_diag_get",
+            "responses": {
+               "200": {
+                  "description": "Successful Response",
+                  "content": {
+                     "application/json": {
+                        "schema": {
+                           "type": "object",
+                           "title": "Response Diag Diag Get"
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   },
+   "components": {
+      "schemas": {
+         "ClientId": {
+            "type": "string",
+            "enum": [
+               "marketplace",
+               "search_service",
+               "user_dashboard",
+               "undefined"
+            ],
+            "title": "ClientId",
+            "description": "Client id."
+         },
+         "EngineId": {
+            "type": "string",
+            "enum": [
+               "content_visit",
+               "content_visit_sort",
+               "content_order",
+               "content_order_sort",
+               "popularity_visit_day",
+               "popularity_visit_total",
+               "popularity_order_day",
+               "popularity_order_total",
+               "popularity_visit_day_sort",
+               "popularity_visit_total_sort",
+               "popularity_order_day_sort",
+               "popularity_order_total_sort",
+               "collaborative_filtering_visit",
+               "collaborative_filtering_order",
+               "popularity_visit_week",
+               "popularity_visit_week_sort",
+               "popularity_visit_month",
+               "popularity_visit_month_sort",
+               "popularity_order_week",
+               "popularity_order_month"
+            ],
+            "title": "EngineId",
+            "description": "Engine id."
+         },
+         "HTTPValidationError": {
+            "properties": {
+               "detail": {
+                  "items": {
+                     "$ref": "#/components/schemas/ValidationError"
+                  },
+                  "type": "array",
+                  "title": "Detail"
+               }
+            },
+            "type": "object",
+            "title": "HTTPValidationError"
+         },
+         "RecommendationContext": {
+            "properties": {
+               "user_id": {
+                  "anyOf": [
+                     {
+                        "type": "integer"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "User ID",
+                  "description": "The unique marketplace identifier of the logged user."
+               },
+               "unique_id": {
+                  "type": "string",
+                  "title": "Not logged user ID",
+                  "description": "The unique identifier of the not logged user."
+               },
+               "aai_uid": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "AAI user ID",
+                  "description": "The unique AAI identifier of the logged user."
+               },
+               "timestamp": {
+                  "type": "string",
+                  "format": "date-time",
+                  "title": "Timestamp",
+                  "description": "The exact time of the recommendation request sending in iso8601 format."
+               },
+               "visit_id": {
+                  "type": "string",
+                  "title": "recommendation page visit ID",
+                  "description": "The unique identifier of the user presence on the recommendation page in the specific time (could be a function of above fields)"
+               },
+               "page_id": {
+                  "type": "string",
+                  "title": "Page ID",
+                  "description": "The unique identifier of the page with recommendation panel."
+               },
+               "panel_id": {
+                  "allOf": [
+                     {
+                        "$ref": "#/components/schemas/ResourceType"
+                     }
+                  ],
+                  "title": "Version of the panel",
+                  "description": "The unique identifiers of the set of recommender panels on the page."
+               },
+               "candidates": {
+                  "items": {
+                     "type": "string"
+                  },
+                  "type": "array",
+                  "title": "Recommendation candidates",
+                  "description": "List of candidates for recommendation"
+               },
+               "client_id": {
+                  "anyOf": [
+                     {
+                        "$ref": "#/components/schemas/ClientId"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Client ID"
+               },
+               "engine_version": {
+                  "anyOf": [
+                     {
+                        "$ref": "#/components/schemas/EngineId"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Engine version",
+                  "default": "content_visit"
+               },
+               "search_data": {
+                  "$ref": "#/components/schemas/SearchData"
+               }
+            },
+            "type": "object",
+            "required": [
+               "unique_id",
+               "timestamp",
+               "visit_id",
+               "page_id",
+               "panel_id",
+               "candidates",
+               "search_data"
+            ],
+            "title": "RecommendationContext",
+            "description": "User context for recommendations."
+         },
+         "RecommendationSet": {
+            "properties": {
+               "panel_id": {
+                  "type": "string",
+                  "title": "Panel Id"
+               },
+               "recommendations": {
+                  "items": {
+                     "type": "string"
+                  },
+                  "type": "array",
+                  "title": "Recommendations"
+               },
+               "explanations": {
+                  "items": {
+                     "type": "string"
+                  },
+                  "type": "array",
+                  "title": "Explanations"
+               },
+               "explanations_short": {
+                  "items": {
+                     "type": "string"
+                  },
+                  "type": "array",
+                  "title": "Explanations Short"
+               },
+               "scores": {
+                  "items": {
+                     "type": "number"
+                  },
+                  "type": "array",
+                  "title": "Scores"
+               },
+               "engine_version": {
+                  "type": "string",
+                  "title": "Engine Version",
+                  "default": ""
+               }
+            },
+            "type": "object",
+            "required": [
+               "panel_id",
+               "recommendations",
+               "explanations",
+               "explanations_short",
+               "scores",
+               "engine_version"
+            ],
+            "title": "RecommendationSet",
+            "description": "Resource recommendations set"
+         },
+         "ResourceType": {
+            "type": "string",
+            "enum": [
+               "datasets",
+               "publications",
+               "software",
+               "trainings",
+               "other_research_product"
+            ],
+            "title": "ResourceType",
+            "description": "Resource type."
+         },
+         "SearchData": {
+            "properties": {
+               "q": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Search phrase"
+               },
+               "categories": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Category"
+               },
+               "geographical_availabilities": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Countries"
+               },
+               "order_type": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Order type"
+               },
+               "providers": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Provider"
+               },
+               "rating": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Rating"
+               },
+               "related_platforms": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Related platforms"
+               },
+               "scientific_domains": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Scientific domain"
+               },
+               "sort": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Sort filter"
+               },
+               "target_users": {
+                  "anyOf": [
+                     {
+                        "items": {
+                           "type": "string"
+                        },
+                        "type": "array"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Target users"
+               }
+            },
+            "type": "object",
+            "title": "SearchData",
+            "description": "User search data."
+         },
+         "SimilarResourcesContext": {
+            "properties": {
+               "user_id": {
+                  "anyOf": [
+                     {
+                        "type": "integer"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "User ID",
+                  "description": "The unique marketplace identifier of the logged user."
+               },
+               "unique_id": {
+                  "type": "string",
+                  "title": "Not logged user ID",
+                  "description": "The unique identifier of the not logged user."
+               },
+               "aai_uid": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "AAI user ID",
+                  "description": "The unique AAI identifier of the logged user."
+               },
+               "timestamp": {
+                  "type": "string",
+                  "format": "date-time",
+                  "title": "Timestamp",
+                  "description": "The exact time of the recommendation request sending in iso8601 format."
+               },
+               "page_id": {
+                  "type": "string",
+                  "title": "Page ID",
+                  "description": "The unique identifier of the page with recommendation panel."
+               },
+               "panel_id": {
+                  "type": "string",
+                  "title": "Version of the panel",
+                  "description": "The unique identifiers of the set of recommender panels on the page."
+               },
+               "resource_id": {
+                  "type": "string",
+                  "title": "Resource unique identifier"
+               },
+               "resource_type": {
+                  "allOf": [
+                     {
+                        "$ref": "#/components/schemas/ResourceType"
+                     }
+                  ],
+                  "title": "Resource type"
+               },
+               "client_id": {
+                  "anyOf": [
+                     {
+                        "$ref": "#/components/schemas/ClientId"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Client ID"
+               },
+               "engine_version": {
+                  "anyOf": [
+                     {
+                        "type": "string"
+                     },
+                     {
+                        "type": "null"
+                     }
+                  ],
+                  "title": "Engine version"
+               }
+            },
+            "type": "object",
+            "required": [
+               "unique_id",
+               "timestamp",
+               "page_id",
+               "panel_id",
+               "resource_id",
+               "resource_type"
+            ],
+            "title": "SimilarResourcesContext",
+            "description": "User context for similar resources recommendations"
+         },
+         "ValidationError": {
+            "properties": {
+               "loc": {
+                  "items": {
+                     "anyOf": [
+                        {
+                           "type": "string"
+                        },
+                        {
+                           "type": "integer"
+                        }
+                     ]
+                  },
+                  "type": "array",
+                  "title": "Location"
+               },
+               "msg": {
+                  "type": "string",
+                  "title": "Message"
+               },
+               "type": {
+                  "type": "string",
+                  "title": "Error Type"
+               }
+            },
+            "type": "object",
+            "required": [
+               "loc",
+               "msg",
+               "type"
+            ],
+            "title": "ValidationError"
+         }
+      }
+   },
+   "tags": [
+      {
+         "name": "recommendation",
+         "description": "Endpoint used for getting recommendations"
+      }
+   ]
+}

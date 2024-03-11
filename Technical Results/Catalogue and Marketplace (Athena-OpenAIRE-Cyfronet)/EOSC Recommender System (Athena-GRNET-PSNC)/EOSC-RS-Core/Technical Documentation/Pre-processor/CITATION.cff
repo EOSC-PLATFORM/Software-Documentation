@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: EOSC Recommender System Preprocessor
+message: An ETL (extract, transform, load) component for EOSC Recommender System (RS), deployable as a standalone service.
+type: software
+authors:
+  - given-names: Paweł
+    family-names: Dziubiński
+    email: pdziubinski@man.poznan.pl
+    affiliation: Poznan Supercomputing and Networking Center
+  - given-names: Maciej
+    family-names: Łabędzki
+    email: labedzki@man.poznan.pl
+    affiliation: Poznan Supercomputing and Networking Center
+  - given-names: Marcin
+    family-names: Rochowiak
+    email: mrochowiak@man.poznan.pl
+    affiliation: Poznan Supercomputing and Networking Center
