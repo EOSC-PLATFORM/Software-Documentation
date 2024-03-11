@@ -4,4 +4,6 @@
 
 ## Backup and Recovery
 
-Configuration of all service components is fully managed through ansible to allow redeploying service components on new hosts. The configuration history is maintained on a private GitHub repository, utilising ansible-vault for sensitive data. The database backend used by the EOSC Core Infrastructure Proxy is operated in clustered mode geographically distributed across data centres, supporting streaming replication and Point-in-Time Recovery for a period of six months (minimum). Backups are stored in a separate system and can be restored at once, losing up to 24 hours of data.
+Information relating to backup and recovery may be found in the Service Availability and Continuity Management plan for this service,  within the EOSC Service Management System (SMS):
+
+<link to the SACM plan, currently under: <https://wiki.eoscfuture.eu/display/EOSCSMS/Capacity+plans+database> >
