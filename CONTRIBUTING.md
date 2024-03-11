@@ -1,6 +1,11 @@
-Please Record your coontributions here.
+Please Record your contributions here.
 
 ## Contribution History
+
+### 2024-03-11
+- **Change**: Added 2 main directories `Technical Results` and `Other Results`, moved all technical directories into `Technical Results`. Added directories `Technical Documentation` in the directories of specific documentation and moved all parts of technical documentation here.
+- **Location**: This change was made in the `Software-Documentation` directory.
+- **Reason**: Change was requested by `Roksana Wilk`.
 
 ### 2024-03-05
 - **Change**: Added EOSC Explore documentation.
@@ -10,7 +15,7 @@ Please Record your coontributions here.
 ### 2024-03-04
 - **Change**: Updated `ReadMe.md` file.
 - **Location**: This change was made in the `Software-Documentation/Catalogue and Marketplace (Athena-OpenAIRE-Cyfronet)/EOSC Recommender System (Athena-GRNET-PSNC)` directory.
-- **Reason**: Change was requested by Marcin Wolski.
+- **Reason**: Change was requested by `Marcin Wolski`.
 
 ### 2024-02-29
 - **Change**: Replaced `LICENSE.txt` file.
