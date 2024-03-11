@@ -21,7 +21,7 @@
 
 ### Instructions
 To deploy the Frontend app: 
-1. Make sure that you have successfully [built](building.md#frontend) and [installed](installation.md#frontend) the application on Nginx (or another Web Server).
+1. Make sure that you have successfully [built](./building.md#frontend) and [installed](./installation.md#frontend) the application on Nginx (or another Web Server).
 2. _Start_ or _reload_ the Web Server service. 
 <br>e.g. `systemctl start nginx` or `systemctl reload nginx`
 
