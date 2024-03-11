@@ -91,7 +91,7 @@ application. Various key-features, are described below:
   Elasticsearch.
 
   For more information about how to upload the resource types, please refer to 
-  [deployment](deployment.md#add-resourcetypes-(only-the-first-time-you-eploy-the-project))
+  [deployment](./deployment.md#add-resourcetypes-(only-the-first-time-you-eploy-the-project))
 - **Vocabularies**
 
   A Vocabulary, one of the resources used by the EOSC Service Resource Catalogue Project, consists of predefined String 

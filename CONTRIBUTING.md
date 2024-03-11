@@ -3,6 +3,11 @@ Please Record your contributions here.
 ## Contribution History
 
 ### 2024-03-11
+- **Change**: Added remaining documentation.
+- **Location**: This change was made in the `Software-Documentation` directory.
+- **Reason**: Documentation was ready.
+
+### 2024-03-11
 - **Change**: Added 2 main directories `Technical Results` and `Other Results`, moved all technical directories into `Technical Results`. Added directories `Technical Documentation` in the directories of specific documentation and moved all parts of technical documentation here.
 - **Location**: This change was made in the `Software-Documentation` directory.
 - **Reason**: Change was requested by `Roksana Wilk`.

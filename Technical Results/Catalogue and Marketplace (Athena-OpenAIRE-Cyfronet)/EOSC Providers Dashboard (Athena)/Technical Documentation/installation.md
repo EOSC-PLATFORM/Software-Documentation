@@ -25,7 +25,7 @@
 
 
 #### Nginx Configuration
-You have to create a [Server Block configuration](https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/) that will point to the directory "dist/**resource-catalogue-ui**" created by [building manually](building.md#manual-build) the webapp.
+You have to create a [Server Block configuration](https://www.nginx.com/resources/wiki/start/topics/examples/server_blocks/) that will point to the directory "dist/**resource-catalogue-ui**" created by [building manually](./building.md#manual-build) the webapp.
 It must also be configured as a reverse proxy for the Backend Application (to serve it under the path '/api') and for the list of [Dependencies](#dependencies) of the project.
 
 See the example below:
@@ -86,7 +86,7 @@ server {
 ```
 
 Lastly, we would advice to validate the configuration of the Nginx to make sure it does not contain errors.
-<br>Execute `nginx -t` with elevated permissions to perform a validation. If the test is successful you can move on to [deploying](deployment.md#frontend) the application.  
+<br>Execute `nginx -t` with elevated permissions to perform a validation. If the test is successful you can move on to [deploying](./deployment.md#frontend) the application.  
 
 
 ---
@@ -122,7 +122,7 @@ CREATE EXTENSION tablefunc;
 ### Installation
 To install the __backend application__ in Apache Tomcat:
 
-1. Move the "./target/**eic-registry.war**" file -created by [building manually](building.md#manual-build-instructions) the app- inside the Tomcat directory, under the folder "tomcat-base-dir/**webapps**/".
+1. Move the "./target/**eic-registry.war**" file -created by [building manually](./building.md#manual-build-instructions) the app- inside the Tomcat directory, under the folder "tomcat-base-dir/**webapps**/".
 2. Create a file named "registry.properties" under "tomcat-base-dir/**lib**" and fill in the following properties.
 ```properties
 ##########################
