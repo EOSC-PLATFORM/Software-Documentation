@@ -2,15 +2,13 @@
 
 <! --- SPDX-License-Identifier: CC-BY-4.0  -- >
 
-## About
-
-### EOSC Recommender System
+## EOSC Recommender System
 
 **Introduction**
 
-Purpose of the document and intended audience TBC
+The EOSC Recommendation System (EOSC-RS) is a novel component of the EOSC Portal. The goal of the EOSC-RS is to recommend a set of resources to a user in a given context, based on their preferences, background data and algorithms. As a result, it improves the overall User Experience (UX) and increase the uptake of the EOSC resources among user communities.  To identify resources useful for a user, the EOSC-RS predicts (or compares) the utility of some of them and then decides which to recommend based on this comparison. The presented recommendations facilitate rapid identification of applicable resources in EOSC as well as better findability of datasets relevant to the particular user.
 
-Overall architecture of the EOSC Recommender System (EOSC-RS): TBC
+The EOSC-RS delivers two main types of recommendations: recommendations for Consumers (researchers) and recommendation for (resource) Providers. The EOSC-RS is available to other EOSC components through a dedicated API (the RS Facade), but it doesn't communicate with end-users directly. 
 
 [Interoperability guideline](https://zenodo.org/doi/10.5281/zenodo.7849177) presents details of the RS architecture and connections between software components.  
 
@@ -21,7 +19,7 @@ Overall architecture of the EOSC Recommender System (EOSC-RS): TBC
 - EOSC-RS-Metrics: evaluation framework for recommendations  (GRNET)
 - EOSC-RS-MP: RS engine serving recommendations for services in the Marketplace (Cyfronet)
 
-**Software components** (https://wiki.eoscfuture.eu/display/EOSCF/Handover+documentation)
+**Software components**
 
 EOSC-RS-Core
 
@@ -42,9 +40,4 @@ EOSC-RS-Metrics
 
 - RMF   [docs](https://github.com/ARGOeu/eosc-recommender-metrics/tree/devel/docs)
 
-**Documentation**
-
-The documentation is stored on the source code repositories listed above, which constitute the single source of truth for EOSC-RS software and related artefacts (such as documentation). For the sake of internal peer review, the copy of the whole set of documentation is on the SharePoint.
-
-NOTE: The EOSC-RS-Metrics documentation is stored in a separate SharePoint folder: EOSC Recommender Metrics Framework (GRNET) 
-
+Additional information about the software components, such as TRLs or SBoM (Sofware Bill of Materials) can be found on the [EOSC-F Wiki](https://wiki.eoscfuture.eu/display/EOSCF/Software+components+map)
