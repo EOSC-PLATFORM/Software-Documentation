@@ -9,18 +9,16 @@
 
 ## Maintenance Overview
 
-- Explanation of the importance of regular maintenance.
-- High-level view of the maintenance tasks described.
+- Regular maintenance EOSC User Dashboard of the is crucial tasks to ensure the stability and performance of the service.
 
 ## Regular Maintenance Tasks
-
-- List of routine tasks required to keep the software/application healthy.
-- Frequency and scheduling recommendations.
+- Tracking a system that monitors emerging errors, e.g. Sentry. 
+- Monitoring all application components and dependencies using monitoring system, e.g. Zabbix
+- On the server side: updating system packages, load checking hardware resources, increasing resources if necessary, e.g. adding RAM, CPU, storage
 
 ## Upgrades and Updates
 
-- Procedures for updating the software to new versions.
-- Guidelines for handling major and minor upgrades.
+- New release should be first deployed to a staging environment and tested. Before updating the software, we recommend making a copy of the databases; in case of unexpected problems, restore the database copies and the previous version of the software.
 
 ## Patch Management
 
@@ -29,23 +27,11 @@
 
 ## Backup and Restore
 
-- Detailed backup procedures for data and configurations.
-- Steps for restoring from backups in case of failure.
-
-## Data Management
-
-- Guidelines for managing and maintaining databases or data repositories.
-- How to handle data migration and data retention.
-
-## Performance Tuning
-
-- Tips and techniques for optimizing system performance.
-- Monitoring and adjusting system resources.
+- See Backup and Recovery 
 
 ## Troubleshooting
 
-- Common maintenance issues and troubleshooting steps.
-- How to diagnose and resolve problems.
+- See Troubleshooting
 
 ## Health Checks
 
@@ -54,14 +40,12 @@
 
 ## Disaster Recovery
 
-- Detailed steps for recovering from major failures or disasters.
-- Ensuring business continuity during recovery.
+- See Disaster Recovery 
 
 ## Documentation and Training
 
-- How to keep maintenance documentation up to date.
-- Training resources for maintenance personnel.
+- See Documentation and Training
 
 ## References
 
-- Links to external resources, documentation, articles related to maintenance practices.
+- https://github.com/cyfronet-fid/eosc-user-dashboard/blob/master/README.md
