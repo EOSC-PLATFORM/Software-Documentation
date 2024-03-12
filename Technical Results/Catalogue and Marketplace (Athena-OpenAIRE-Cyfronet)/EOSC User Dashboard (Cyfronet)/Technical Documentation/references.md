@@ -4,4 +4,4 @@
 
 ## References
 
-- Links to external resources, documentation, articles related to operational practices.
+- User documentation: https://marketplace.eosc-portal.eu/user_documentation

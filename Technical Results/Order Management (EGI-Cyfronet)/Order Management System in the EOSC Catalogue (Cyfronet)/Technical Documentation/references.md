@@ -4,6 +4,7 @@
 
 ## References
 
-Links: 
-1. https://marketplace.eosc-portal.eu/api_docs?subsection=introduction
-2. https://zenodo.org/records/8375323
+Links:
+- User documentation: https://marketplace.eosc-portal.eu/user_documentation
+- API documentation: https://marketplace.eosc-portal.eu/api_docs
+- Order Management System Interoperability Guideline: https://zenodo.org/records/8375323
