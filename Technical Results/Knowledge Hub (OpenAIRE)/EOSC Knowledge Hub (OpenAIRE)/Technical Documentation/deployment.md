@@ -16,3 +16,9 @@ A landing page is a static website that we can download from a git repository.
 ```
 
 Then we place the directory with the files on the www server. You can use, for example, Apache or Nginx server.
+
+### OpenPlato
+
+The code implementing the Moodle is deployed at the ICM data centre.
+
+Documentation of the Moodle software: [https://docs.moodle.org/401/en/Installation](https://docs.moodle.org/401/en/Installation)
