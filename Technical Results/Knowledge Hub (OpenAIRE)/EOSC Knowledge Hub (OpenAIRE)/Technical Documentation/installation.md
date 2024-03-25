@@ -7,6 +7,8 @@
 - Detailed instructions for installing the software/application.
 - Prerequisites, dependencies, and installation scripts.
 
+### OpenPlato
+
 **Basic requirements**
 - working webserver (Apache or Nginx) [in our case Apache]
 

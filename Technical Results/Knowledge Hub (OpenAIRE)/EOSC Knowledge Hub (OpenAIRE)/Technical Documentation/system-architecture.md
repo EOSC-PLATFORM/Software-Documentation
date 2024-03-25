@@ -7,6 +7,7 @@
 - Description of the software/application architecture.
 - Components, modules, and their interactions.
 
+### OpenPlato
 
 The following are required for the software to function correctly:
 

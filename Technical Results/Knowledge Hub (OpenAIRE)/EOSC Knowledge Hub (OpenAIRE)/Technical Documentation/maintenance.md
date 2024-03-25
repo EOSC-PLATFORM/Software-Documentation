@@ -2,66 +2,50 @@
 
 <! --- SPDX-License-Identifier: CC-BY-4.0  -- >
 
-## Introduction
+##Introduction
 
-- Purpose of the document and intended audience.
-- Overview of the maintenance procedures covered in the documentation.
+Regular maintenance of OpenPlato is crucial to ensure the stability, high availability and performance of the service. Key maintenance tasks include software updates, security patches, hardware and software optimisation, and routine monitoring tasks.
 
-## Maintenance Overview
+##Regular Maintenance Tasks
 
-- Explanation of the importance of regular maintenance.
-- High-level view of the maintenance tasks described.
+Perform monitoring checks for internal and external monitoring systems. Check the health of hardware, CPU load, RAM Load and availability of disk space if these metrics are not included in the local monitoring probes. Deploy new releases according to the schedule agreed with EOSC governance. Announce any important events which affect OpenPlato's function, like downtimes at least 24 hours in advance. Announce any emergency situations immidiatelly using the helpdesk broadcast feature.
 
-## Regular Maintenance Tasks
+##Upgrades and Updates
 
-- List of routine tasks required to keep the software/application healthy.
-- Frequency and scheduling recommendations.
+Any new release should be first deployed to staging environement and thoroughly tested. Especially all custom functions should be checked before deploying the release into production environment. The release schedule for OpenPlato follows the Moodle release schedule but might be delayed in order to wait for the most stable version.
 
-## Upgrades and Updates
+##Patch Management
 
-- Procedures for updating the software to new versions.
-- Guidelines for handling major and minor upgrades.
+In case of security releases, apply patches immediately on staging system and after on production system, as these changes are considered as emergency changes. If possible send a short broadcast to all logged learners about short interuption of the service.
 
-## Patch Management
+##Backup and Restore
 
-- Process for applying security patches and updates.
-- Steps to ensure the software is up-to-date.
+See Backup and Restore section
 
-## Backup and Restore
+##Data Management
 
-- Detailed backup procedures for data and configurations.
-- Steps for restoring from backups in case of failure.
+Use the HA databases if possible, keep the backups no more than 3 months on the backup storage.
 
-## Data Management
+##Performance Tuning
 
-- Guidelines for managing and maintaining databases or data repositories.
-- How to handle data migration and data retention.
+Apply hardware and software performance tuning measures as described in Installation and Configuration sections.
 
-## Performance Tuning
+##Troubleshooting
 
-- Tips and techniques for optimizing system performance.
-- Monitoring and adjusting system resources.
+Check logging and monitoring information. Consult with Moodle troubleshooting pages in the documetation.
 
-## Troubleshooting
+##Health Checks
 
-- Common maintenance issues and troubleshooting steps.
-- How to diagnose and resolve problems.
+Perform regular health checks and monitoring history to identify any faulty periods. For faulty periods analyse logging information to understand what was the cause of the problem. 
 
-## Health Checks
+##Disaster Recovery
 
-- Regular health checks and monitoring procedures.
-- How to identify potential issues before they become critical.
+See Disaster Recovery section.
 
-## Disaster Recovery
+##Documentation and Training
 
-- Detailed steps for recovering from major failures or disasters.
-- Ensuring business continuity during recovery.
+See Documentation and Training section.
 
-## Documentation and Training
+##References
 
-- How to keep maintenance documentation up to date.
-- Training resources for maintenance personnel.
-
-## References
-
-- Links to external resources, documentation, articles related to maintenance practices.
+See References section. 

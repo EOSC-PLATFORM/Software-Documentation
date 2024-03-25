@@ -7,3 +7,5 @@
 Information regarding current requirements for delivering agreed service capacity and service levels may be found in the Capacity Management plan for this service, within the EOSC Service Management System (SMS):
 
 <link to the CAPM plan, currently under: <https://wiki.eoscfuture.eu/display/EOSCSMS/Capacity+plans+database> >
+
+Moodle Performance and scalability documentation: [https://docs.moodle.org/dev/Performance_and_scalability](https://docs.moodle.org/dev/Performance_and_scalability)

@@ -1,22 +1,3 @@
-Install module SAML2
-
-Set:
-IdP metadata xml OR public xml URL: https://aai.eosc-portal.eu/auth/realms/core/protocol/saml/descriptor
-IdP label override: Login via EOSC AAI
-Allowed any auth type: Yes
-Mapping IdP: mail
-Mapping Moodle: email address
-Auto create users: no
-
-After configuration it should generate the SP Metadata and send the SP Metadata to EOSC Admin
-
-Data mapping:
-Username: voPersonID
-First name: givenName
-Last name: sn
-Email address: mail
-
-
 # Licence
 
 <! --- SPDX-License-Identifier: CC-BY-4.0  -- >
@@ -26,10 +7,33 @@ Email address: mail
 - Purpose of the document and intended audience.
 - Importance of proper configuration for the software/application.
 
+Configuration process of OpenPlato for administrators.
+
 ## Configuration Overview
 
 - Brief overview of the configuration process.
 - Explanation of how configuration affects the behaviour of the software.
+
+Install module SAML2
+
+Set:
+
+- IdP metadata xml OR public xml URL: [https://aai.eosc-portal.eu/auth/realms/core/protocol/saml/descriptor](https://aai.eosc-portal.eu/auth/realms/core/protocol/saml/descriptor)
+- IdP label override: Login via EOSC AAI
+- Allowed any auth type: Yes
+- Mapping IdP: mail
+- Mapping Moodle: email address
+- Auto create users: no
+
+After configuration it should generate the SP Metadata and send the SP Metadata to EOSC Admin
+
+Data mapping:
+
+- Username: voPersonID
+- First name: givenName
+- Last name: sn
+- Email address: mail
+
 
 ## Configuration Files
 
@@ -69,9 +73,10 @@ Email address: mail
 
 ## Troubleshooting
 
-- Common configuration issues and potential solutions.
-- How to diagnose misconfigurations.
+- The important check of proper configuration and function of the EOSC Helpdesk is the health check available at: https://eosc-helpdesk.eosc-portal.eu/#system/monitoring
+- Other source of troubleshooting is Moodle community portal: https://docs.moodle.org/403/en/Main_page
+
 
 ## References
 
-- Links to external resources, documentation, articles related to configuration.
+- More info at https://docs.moodle.org/403/en/Main_page
