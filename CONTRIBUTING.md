@@ -2,6 +2,11 @@ Please Record your contributions here.
 
 ## Contribution History
 
+### 2024-03-25
+- **Change**: Updated EOSC Knowledge Hub.
+- **Location**: This change was made in the `Software-Documentation/Knowledge Hub (OpenAIRE)/EOSC Knowledge HUB (OpenAIRE)/Technical Documentation` directory.
+- **Reason**: Documentation has been updated.
+- 
 ### 2024-03-11
 - **Change**: Added remaining documentation.
 - **Location**: This change was made in the `Software-Documentation` directory.

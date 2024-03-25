@@ -10,6 +10,8 @@ Information relating to backup and recovery may be found in the Service Availabi
 
 ## Backup procedure
 
+### OpenPlato
+
 Backups are created using rsync and cron.
 Backuped directories:
 
