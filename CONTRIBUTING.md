@@ -2,6 +2,11 @@ Please Record your contributions here.
 
 ## Contribution History
 
+### 2024-04-23
+- **Change**: Renamed `Technical Results` and `Other Results` into `Technical Documentation` and `Other Documentation`.
+- **Location**: This change was made in the `Software-Documentation` directory.
+- **Reason**: The repositories were renamed according to e-mail correspondence.
+
 ### 2024-03-28
 - **Change**: Deleted `Execution Framework`, `Configuration Management Database (EGI)` and `EOSC Order Handling System - SOMBO`.
 - **Location**: This change was made in the `Software-Documentation` directory.
