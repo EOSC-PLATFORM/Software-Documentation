@@ -3,7 +3,7 @@ Please Record your contributions here.
 ## Contribution History
 
 ### 2024-04-23
-- **Change**: Renamed `Technical Results` and `Other Results` into `Technical Documentation` and `Other Documentation`.
+- **Change**: Renamed `Technical Results` and `Other Results` into `Technical Documentation` and `IPR Documentation`.
 - **Location**: This change was made in the `Software-Documentation` directory.
 - **Reason**: The repositories were renamed according to e-mail correspondence.
 
