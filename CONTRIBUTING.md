@@ -2,6 +2,12 @@ Please Record your contributions here.
 
 ## Contribution History
 
+### 2024-04-29
+- **Change**: Renamed `IPR Documentation` to `Key Exploitation Results`, created README.md and the entire
+DEMO-EOSCFuture repository (https://github.com/gaALvf/DEMO-EOSCFuture/tree/main) has been added.
+- **Location**: This change was made in the `IPR Documentation` / `Key Exploitation Results` directory.
+- **Reason**: The repository was renamed and added according to e-mail correspondence.
+
 ### 2024-04-23
 - **Change**: Renamed `Technical Results` and `Other Results` into `Technical Documentation` and `IPR Documentation`.
 - **Location**: This change was made in the `Software-Documentation` directory.
