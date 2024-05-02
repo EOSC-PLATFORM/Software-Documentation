@@ -2,6 +2,11 @@ Please Record your contributions here.
 
 ## Contribution History
 
+### 2024-05-02
+- **Change**: Added `README.md` for whole `Software-Documentation`.
+- **Location**: This change was made in the `Software-Documentation` directory.
+- **Reason**: The `README.md` added according to e-mail correspondence.
+
 ### 2024-04-29
 - **Change**: Renamed `IPR Documentation` to `Key Exploitation Results`, created README.md and the entire
 DEMO-EOSCFuture repository (https://github.com/gaALvf/DEMO-EOSCFuture/tree/main) has been added.
