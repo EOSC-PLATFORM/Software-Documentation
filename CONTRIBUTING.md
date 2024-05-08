@@ -3,6 +3,11 @@ Please Record your contributions here.
 ## Contribution History
 
 ### 2024-05-02
+- **Change**: Added `README.md` for `Software-Documentation/Technical Documentation`.
+- **Location**: This change was made in the `Software-Documentation/Technical Documentation` directory.
+- **Reason**: The `README.md` added according to e-mail correspondence.
+
+### 2024-05-02
 - **Change**: Added `README.md` for whole `Software-Documentation`.
 - **Location**: This change was made in the `Software-Documentation` directory.
 - **Reason**: The `README.md` added according to e-mail correspondence.
