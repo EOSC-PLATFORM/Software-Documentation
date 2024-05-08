@@ -3,6 +3,23 @@ Please Record your contributions here.
 ## Contribution History
 
 ### 2024-05-02
+- **Change**: The `LICENSE.txt` files, which previously contained software licences, have now been updated to include the `CC-BY` licence.
+- **Location**: This change was made in the directories:
+`Software-Documentation/Technical Documentation/Catalogue and Marketplace (Athena-OpenAIRE-Cyfronet)/EOSC Marketplace and Search Service (Cyfronet)/Technical Documentation`
+`Software-Documentation/Technical Documentation/Catalogue and Marketplace (Athena-OpenAIRE-Cyfronet)/EOSC Recommender System (Athena-GRNET-PSNC)/EOSC-RS-Core/Technical Documentation`
+`Software-Documentation/Technical Documentation/Catalogue and Marketplace (Athena-OpenAIRE-Cyfronet)/EOSC User Dashboard (Cyfronet)/Technical Documentation`
+`Software-Documentation/Technical Documentation/Order Management (EGI-Cyfronet)/Order Management System in the EOSC Catalogue (Cyfronet)/Technical Documentation`.
+- **Reason**: The `LICENSE.txt` files were updated according to e-mail correspondence.
+- 
+### 2024-05-02
+- **Change**: Added `LICENSE.txt` with `CC-BY` license.
+- **Location**: This change was made in the directories:
+`Software-Documentation/Technical Documentation/Accounting (GRNET-OpenAIRE)/EOSC Accounting for Services (GRNET)/Technical Documentation`,
+`Software-Documentation/Technical Documentation/Catalogue and Marketplace (Athena-OpenAIRE-Cyfronet)/EOSC Recommender System (Athena-GRNET-PSNC)/EOSC-RS-Extensons/Technical Documentation`,
+`Software-Documentation/Technical Documentation/Messaging (GRNET)/EOSC Messaging Service (GRNET)/Technical Documentation`.
+- **Reason**: The `LICENSE.txt` files were added according to e-mail correspondence.
+
+### 2024-05-02
 - **Change**: Added `README.md` for `Software-Documentation/Technical Documentation`.
 - **Location**: This change was made in the `Software-Documentation/Technical Documentation` directory.
 - **Reason**: The `README.md` added according to e-mail correspondence.
