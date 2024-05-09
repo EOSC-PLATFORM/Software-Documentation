@@ -2,7 +2,19 @@ Please Record your contributions here.
 
 ## Contribution History
 
-### 2024-05-02
+### 2024-05-09
+- **Change**: The `Readme.md` files:
+  - KER1j: The **CC-BY** license for the **EOSC SMS ISM Additions and improvements** has been changed to **Restricted (GDPR limitations)**.
+The URL row for **EOSC SMS ISM Additions and improvements** has been deleted.
+  - KER1k: The **CC-BY** license for the result **Additions and improvements** has been changed to **Restricted (GDPR limitations)**.
+  - KER2a: The license for the **Service Catalogue content** result has been changed from  **Apache 2.0** to **Restricted (GDPR limitations)**.
+- **Location**: This change was made in the directories:
+  - `Software-Documentation/Key Exploitation Results/#KER1j EOSC Security Coordination`
+  - `Software-Documentation/Key Exploitation Results/#KER1k EOSC Service Management System`
+  - `Software-Documentation/Key Exploitation Results/#KER2a EOSC Resource Catalogue (Service Provider Portal)`
+- **Reason**: The `Readme.md` files were updated according to e-mail correspondence.
+
+### 2024-05-08
 - **Change**: The `LICENSE.txt` files, which previously contained software licences, have now been updated to include the `CC-BY` licence.
 - **Location**: This change was made in the directories:
   - `Software-Documentation/Technical Documentation/Catalogue and Marketplace (Athena-OpenAIRE-Cyfronet)/EOSC Marketplace and Search Service (Cyfronet)/Technical Documentation`
@@ -10,8 +22,8 @@ Please Record your contributions here.
   - `Software-Documentation/Technical Documentation/Catalogue and Marketplace (Athena-OpenAIRE-Cyfronet)/EOSC User Dashboard (Cyfronet)/Technical Documentation`
   - `Software-Documentation/Technical Documentation/Order Management (EGI-Cyfronet)/Order Management System in the EOSC Catalogue (Cyfronet)/Technical Documentation`.
 - **Reason**: The `LICENSE.txt` files were updated according to e-mail correspondence.
-- 
-### 2024-05-02
+
+### 2024-05-08
 - **Change**: Added `LICENSE.txt` with `CC-BY` license.
 - **Location**: This change was made in the directories:
   - `Software-Documentation/Technical Documentation/Accounting (GRNET-OpenAIRE)/EOSC Accounting for Services (GRNET)/Technical Documentation`,
@@ -19,7 +31,7 @@ Please Record your contributions here.
   - `Software-Documentation/Technical Documentation/Messaging (GRNET)/EOSC Messaging Service (GRNET)/Technical Documentation`.
 - **Reason**: The `LICENSE.txt` files were added according to e-mail correspondence.
 
-### 2024-05-02
+### 2024-05-08
 - **Change**: Added `README.md` for `Software-Documentation/Technical Documentation`.
 - **Location**: This change was made in the `Software-Documentation/Technical Documentation` directory.
 - **Reason**: The `README.md` added according to e-mail correspondence.
